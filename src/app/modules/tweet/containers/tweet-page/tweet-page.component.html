@@ -1,1 +1,6 @@
-<p>tweet-page works!</p>
+<textarea #input cols="30" rows="10" [(ngModel)]="message"></textarea>
+<button (click)="postTweet(input.value)">Post tweet</button>
+
+<div *ngFor="let tweet of tweets">
+  {{ tweet.message }}
+</div>
