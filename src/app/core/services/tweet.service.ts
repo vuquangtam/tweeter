@@ -19,8 +19,9 @@ export class TweetService {
 
   create(message: string) {
     const id = uuid();
+    const createdAt = Date.now();
 
-    this.tweetEntities[id] = { id, message };
+    this.tweetEntities[id] = { id, message, createdAt };
 
     this.tweets.push(id);
   }

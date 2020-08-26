@@ -17,6 +17,10 @@ export class TweetPageComponent implements OnInit {
   }
 
   postTweet(message) {
+    if (!message) {
+      return;
+    }
+
     message = message.trim();
 
     let chunks = [];
@@ -24,7 +28,11 @@ export class TweetPageComponent implements OnInit {
     if (message.length <= this.chunkSize) {
       chunks = [message];
     } else {
-      chunks = splitMessage(message, this.chunkSize);
+      try {
+        chunks = splitMessage(message, this.chunkSize);
+      } catch(e) {
+        alert(e);
+      }
     }
 
     chunks.forEach(chunk => {

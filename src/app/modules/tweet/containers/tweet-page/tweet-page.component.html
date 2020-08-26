@@ -1,6 +1,45 @@
-<textarea #input cols="30" rows="10" [(ngModel)]="message"></textarea>
-<button (click)="postTweet(input.value)">Post tweet</button>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">Tweeter</a>
+    </div>
+  </div>
+</nav>
+<!-- ./nav -->
 
-<div *ngFor="let tweet of tweets">
-  {{ tweet.message }}
-</div>
+<!-- main -->
+<main class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+
+    <div class="col-md-6">
+      <!-- post form -->
+      <div class="tweetInput">
+        <textarea  class="form-control" #input cols="30" rows="10" placeholder="Make a tweet..."></textarea>
+      </div>
+
+      <button class="btn btn-success btn-block" name="post" (click)="postTweet(input.value); input.value=''">Post</button>
+
+      <!-- ./post form -->
+
+      <!-- feed -->
+      <div class="feed">
+        <!-- post -->
+        <div class="panel panel-default" *ngFor="let tweet of tweets">
+          <hr/>
+
+          <div class="panel-body">
+            <p>{{ tweet.message }}</p>
+          </div>
+
+          <div class="panel-footer">
+            <span>posted {{ tweet.createdAt | date }} by me</span>
+          </div>
+        </div>
+        <!-- ./post -->
+      </div>
+      <!-- ./feed -->
+    </div>
+  </div>
+</main>
+<!-- ./main -->
