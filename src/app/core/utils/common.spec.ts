@@ -15,13 +15,6 @@ describe('splitMessage', () => {
     expect(() => splitMessage('', true)).toThrow('size is not number');
   });
 
-  describe('when input less than or equal length', () => {
-    it('should return original message', () => {
-      const message = 'less than 50';
-      expect(splitMessage(message, 50)).toEqual(message);
-    });
-  });
-
   describe('when input greater than length', () => {
     it('should raise error when message contains span of non-whitespace characters longer than length', () => {
       const message = '0'.repeat(51);

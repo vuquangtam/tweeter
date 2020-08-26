@@ -7,9 +7,7 @@ export function splitMessage(message, size) {
     throw 'size is not number';
   }
 
-  if (message.length <= size) {
-    return message;
-  }
+  message = message.trim();
 
   const words = message.split(/\s+/);
 
